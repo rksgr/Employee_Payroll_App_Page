@@ -151,15 +151,25 @@
             <label class="label text" for="notes">Notes</label> 
             <textarea id="notes" class="input" name="Notes" placeholder="" style="height:100px"></textarea>
             </div>
-            <div class="row-content">
+            <div class="button-content">
             <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
             <div class="submit-reset">
             <button type="submit" class="button submitButton" id="submitButton">Submit</button>
             <button type="reset" class="resetButton button">Reset</button>
             </div>
         </div>
-            </form>
-        </div>  
-
+        </form>
+        </div>         
+        <script>
+            /** UC 8: Set eventlistener on salary range to display appropriate value*/
+            const salary = document.querySelector('#salary');
+            const output = document.querySelector('.salary-output-text');
+            output.textContent = salary.value;
+            
+            // Display text corresponding to value on slider
+            salary.addEventListener('input',function(){
+                output.textContent = salary.value;
+            });
+        </script>
     </body>
 </html> 
