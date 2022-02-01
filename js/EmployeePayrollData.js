@@ -5,7 +5,12 @@ class EmployeePayrollData{
     set id(id){this._id = id;}
 
     get name(){return this._name;}
-    set name(name){this._name=name;}
+    set name(name){
+        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+        if(nameRegex.test(name))
+            this._name=name;
+        else throw 'Name is Incorrect!';
+    }
 
     get department(){return this._department;}
     set department(department){this._department=department;}
@@ -35,5 +40,6 @@ class EmployeePayrollData{
                 ",profilePic='"+this.profilePic+", department="+this.department+
                 ", salary="+this.salary+",startDate="+empDate+",note="+this.note;
     }
+
 }
 
