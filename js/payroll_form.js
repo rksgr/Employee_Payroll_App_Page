@@ -6,14 +6,15 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         if (name.value.length == 0){
             textError.textContent ="";
             return;
-        }
-        try{
-            (new EmployeePayrollData()).name = name.value;
-            textError.textContent = "";
-        }catch(e){
-            textError.textContent = e;
-        }
-        });
+        }else{
+        
+            try{
+                new EmployeePayrollData().name = name.value;
+                textError.textContent = "";
+            }catch(e){
+                textError.textContent = e;
+            }
+        }});
 
     const salary = document.querySelector('#salary');
     const output = document.querySelector('.salary-output-text');
@@ -23,9 +24,8 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     salary.addEventListener('input',function(){
         output.textContent = salary.value;
     });
-    });
 
-    
+
     /**UC 3: Create employee payroll object on save*/
     const save = ()=>{
         try{
@@ -77,3 +77,32 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         alert(employeePayrollList.toString());
         localStorage.setItem("employeePayrollList",JSON.stringify(employeePayrollList));
     }
+
+    /**UC 5: Reset the Employee payroll form on clicking reset*/
+    const resetForm = ()=>{
+        setValue('#name','');
+        unsetSelectedValues('[name=profile]');
+        unsetSelectedValues('[name=gender]');
+        unsetSelectedValues('[name=department]');
+        setValue('#salary','');
+        setValue('#notes','');
+        setValue('#day','1');
+        setValue('#month','January');
+        setValue('#year','2020')
+    }
+    const unsetSelectedValues = (propertyValue) =>{
+        let allItems = document.querySelectorAll(propertyValue);
+        allItems.forEach(item=>{
+            item.checked=false;
+        });      
+    }
+
+    const setTextValue = (id,value) =>{
+        const element = document.querySelector(id);
+        element.textContent = value;
+    }
+    const setValue = (id,value) =>{
+        const element = document.querySelector(id);
+        element.value = value;
+    }
+});
