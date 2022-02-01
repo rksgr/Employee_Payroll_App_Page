@@ -25,3 +25,41 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     });
     });
 
+    
+    /**UC 3: Create employee payroll object on save*/
+    const save = ()=>{
+        try{
+            let employeePayrollData = createEmployeePayroll();
+        }catch(e){
+            return;
+        }
+    }
+    const createEmployeePayroll = () =>{
+        let EmployeePayrollData = new EmployeePayrollData();
+        try{
+            employeePayrollData.name = getInputValueById('#name');
+        }catch(e){
+            setTextValue('.text-error',e);
+            throw e;
+        }
+        employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
+        employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
+        employeePayrollData.department = getSelectedValues('[name=department]').pop();
+        employeePayrollData.salary = getSelectedValues('[name=salary]').pop();
+        employeePayrollData.note = getSelectedValues('[name=note]').pop();
+
+        let date=getInputValueById('#day')+ " "+ getInputValueById('#month')+ " "
+                getInputValueById('#year');
+        employeePayrollData.Date = Date.parse(date);
+        alert(employeePayrollData.toString());
+        return employeePayrollData;
+    }
+
+    const getSelectedValues = (propertyValue) =>{
+        let allItems = document.querySelectorAll(propertyValue);
+        let sellItems = [];
+        allItems.forEach(item =>{
+            if(item.checked) sellItems.push(item.value);
+        });
+        return sellItems;
+    }
