@@ -10,6 +10,7 @@
     <title>Employee Payroll App</title>
 </head>
 <body>
+    <!--UC1-->
     <header class="header-content header">
     <div class="logo-content">
         <img src="../assets/images/logo.png" alt="">    
@@ -19,14 +20,44 @@
             </div>
     </div>
     </header>
+    <!--UC 2-->
     <div class="main-content">
         <div class="header-content">
         <div class="emp-detail-text">
             Employee Details <div class="emp-count">10</div>
         </div>
-        <a href="../pages/new_payroll_form_js.html" class="add-button">
+        <a href="../pages/payroll.html" class="add-button">
             <img src="../assets/icons/add-24px.svg" alt="">Add User</a>
     </div>
     </div>
+    <table id="display" class="table">
+        <!--UC 3-->
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Start Date</th>
+            <th>Actions:</th>
+        </tr>
+        <tr>
+            <td><img class="profile" alt="" src="../assets/profile-images/Ellipse -2.png">
+            </td>
+            <td>Altaf Hussain</td>
+            <td>Male</td>
+            <td><div class='dept-label'>HR</div>
+                <div class='dept-label'>Finance</div></td>
+            <td>2100000</td>
+            <td>1 Nov 2020</td>
+            <td>
+                <img id="1" onclick="remove(this)" alt="delete"
+                    src="../assets/icons/delete-black-18dp.svg">
+                <img id="2" onclick="update(this)" alt="edit"
+                    src="../assets/icons/create-black-18dp.svg">
+            </td>
+        </tr>
+    </table>
+    <script defer src="../js/inner_payroll_form.js"></script>
 </body>
 </html>
